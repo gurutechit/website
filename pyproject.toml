@@ -19,5 +19,6 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "pelican[markdown] (==4.11.0)"
+    "pelican[markdown] (==4.11.0)",
+    "tzdata (>=2025.3,<2026.0)",
 ]
