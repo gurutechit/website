@@ -2,7 +2,7 @@
 # https://github.com/wjdp/htmltest
 
 # Ignore empty hash links (href="#") - common in templates for UI elements
-IgnoreEmptyHref: true
+IgnoreInternalEmptyHash: true
 
 # Check internal links
 CheckInternal: true
