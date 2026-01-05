@@ -35,3 +35,6 @@ coverage.xml
 # Project specific
 output/
 output/**
+
+# CI tools
+tmp/.htmltest/
