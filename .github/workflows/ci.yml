@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+
+env:
+  HTMLTEST_VERSION: "0.17.0"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Poetry
+        uses: abatilo/actions-poetry@v4
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Build site
+        run: make publish
+
+      - name: Validate HTML
+        run: poetry run html5validator --root output/ --ignore 'element "img" is missing required attribute "src"'
+
+      - name: Cache htmltest
+        id: cache-htmltest
+        uses: actions/cache@v4
+        with:
+          path: ~/bin/htmltest
+          key: htmltest-${{ env.HTMLTEST_VERSION }}
+
+      - name: Download htmltest
+        if: steps.cache-htmltest.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/bin
+          curl -fsSL "https://github.com/wjdp/htmltest/releases/download/v${HTMLTEST_VERSION}/htmltest_${HTMLTEST_VERSION}_linux_amd64.tar.gz" \
+            | tar xzf - -C ~/bin htmltest
+          chmod +x ~/bin/htmltest
+
+      - name: Check links
+        run: ~/bin/htmltest --conf .htmltest.yml output/
