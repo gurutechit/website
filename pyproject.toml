@@ -10,7 +10,7 @@ package-mode = false
 python = ">=3.9,<4.0"
 
 [tool.poetry.group.dev.dependencies]
-pelican = {version = "4.11.0", extras = ["markdown"]}
+pelican = {version = "4.11.0.post0", extras = ["markdown"]}
 tzdata = "^2025.3"
 html5validator = "^0.4.2"
 
