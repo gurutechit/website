@@ -1,25 +1,19 @@
-[project]
+[tool.poetry]
 name = "www"
 version = "0.1.0"
 description = "www.gurutech.it"
-authors = [
-    {name = "Gianluca",email = "gianluca@gurutech.it"}
-]
+authors = ["Gianluca <gianluca@gurutech.it>"]
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
-dependencies = [
-]
-
-[tool.poetry]
 package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+pelican = {version = "4.11.0", extras = ["markdown"]}
+tzdata = "^2025.3"
+html5validator = "^0.4.2"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[dependency-groups]
-dev = [
-    "pelican[markdown] (==4.11.0)",
-    "tzdata (>=2025.3,<2026.0)",
-    "html5validator (>=0.4.2,<1.0.0)",
-]

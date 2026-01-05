@@ -58,3 +58,8 @@ Managed via Poetry (Python 3.9+). Install with:
 ```bash
 poetry install
 ```
+
+## Git Workflow
+
+- PRs must be **squash merged** (merge commits are disabled on this repository)
+- Use `gh pr merge --squash` when merging PRs
