@@ -61,5 +61,6 @@ poetry install
 
 ## Git Workflow
 
-- PRs must be **squash merged** (merge commits are disabled on this repository)
+- Main branch is **protected** - all changes must go through pull requests
+- PRs must be **squash merged** (merge commits are disabled)
 - Use `gh pr merge --squash` when merging PRs
