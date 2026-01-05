@@ -20,3 +20,6 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # DISQUS_SITENAME = ""
 # GOOGLE_ANALYTICS = ""
+
+# SEO plugin - include sitemap URL in robots.txt (production only)
+SEO_ENHANCER_SITEMAP_URL = f"{SITEURL}/sitemap.xml"

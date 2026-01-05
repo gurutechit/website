@@ -13,6 +13,8 @@ python = ">=3.9,<4.0"
 pelican = {version = "4.11.0.post0", extras = ["markdown"]}
 tzdata = "^2025.3"
 html5validator = "^0.4.2"
+pelican-sitemap = "^1.2.2"
+pelican-seo = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
