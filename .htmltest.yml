@@ -1,0 +1,37 @@
+# htmltest configuration
+# https://github.com/wjdp/htmltest
+
+# Check internal links
+CheckInternal: true
+
+# Check external links
+CheckExternal: true
+
+# Check mailto links format
+CheckMailto: true
+
+# Check tel links format
+CheckTel: true
+
+# Check favicon exists
+CheckFavicon: false
+
+# Check meta refresh tags
+CheckMetaRefresh: true
+
+# Timeout for external link checks (seconds)
+ExternalTimeout: 15
+
+# Ignore URLs matching these patterns
+IgnoreURLs:
+  - "^https://fonts.googleapis.com"
+  - "^https://fonts.gstatic.com"
+
+# Ignore missing alt attributes (Pelican may generate some images without)
+IgnoreAltMissing: false
+
+# Output directory (passed via CLI)
+# DirectoryPath: output/
+
+# Cache external link results
+CacheExpires: "6h"
