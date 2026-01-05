@@ -34,8 +34,20 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-STATIC_PATHS = ['extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}}
+STATIC_PATHS = [
+    'extra/CNAME',
+    'extra/favicon.ico',
+    'extra/favicon-16x16.png',
+    'extra/favicon-32x32.png',
+    'extra/apple-touch-icon.png',
+]
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/favicon-16x16.png': {'path': 'favicon-16x16.png'},
+    'extra/favicon-32x32.png': {'path': 'favicon-32x32.png'},
+    'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
+}
 
 # Plugins
 PLUGINS = ['sitemap', 'seo']
