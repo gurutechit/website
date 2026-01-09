@@ -29,6 +29,8 @@ ExternalTimeout: 15
 IgnoreURLs:
   - "^https://fonts.googleapis.com"
   - "^https://fonts.gstatic.com"
+  # Ignore theme assets - they won't exist until deployment
+  - "^https://www.gurutech.it/theme/"
 
 # Ignore missing alt attributes (Pelican may generate some images without)
 IgnoreAltMissing: false
