@@ -35,6 +35,8 @@ coverage.xml
 # Project specific
 output/
 output/**
+seo_report.html
+logos/
 
 # CI tools
 tmp/.htmltest/
