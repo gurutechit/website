@@ -1,0 +1,85 @@
+diff -ruN a/bootstrap2-dark/templates/archives.html b/bootstrap2-dark/templates/archives.html
+--- a/bootstrap2-dark/templates/archives.html	2026-01-09 21:28:16.057304977 +0100
++++ b/bootstrap2-dark/templates/archives.html	2026-01-09 21:11:42.873305356 +0100
+@@ -1,6 +1,6 @@
+ {% extends "base.html" %}
+ {% block content %}
+-<section id="content">
++<section class="content-section">
+ <h1>Archives for {{ SITENAME }}</h1>
+ 
+ <dl>
+diff -ruN a/bootstrap2-dark/templates/article.html b/bootstrap2-dark/templates/article.html
+--- a/bootstrap2-dark/templates/article.html	2026-01-09 21:28:16.057304977 +0100
++++ b/bootstrap2-dark/templates/article.html	2026-01-09 21:21:38.049305129 +0100
+@@ -1,11 +1,11 @@
+ {% extends "base.html" %}
+ {% block title %}{{ article.title }}{% endblock %}
+ {% block content %}
+-<section id="content">
++<section class="content-section">
+         <article>
+                 <header>
+                         <h1>
+-                                <a href="{{ pagename }}"
++                                <a href="{{ SITEURL }}/{{ article.url }}"
+                                         rel="bookmark"
+                                         title="Permalink to {{ article.title }}">
+                                         {{ article.title}}
+diff -ruN a/bootstrap2-dark/templates/authors.html b/bootstrap2-dark/templates/authors.html
+--- a/bootstrap2-dark/templates/authors.html	2026-01-09 21:28:16.057304977 +0100
++++ b/bootstrap2-dark/templates/authors.html	2026-01-09 21:11:02.169305371 +0100
+@@ -0,0 +1,10 @@
++{% extends "base.html" %}
++{% block title %}Authors | {{ SITENAME }}{% endblock %}
++{% block content %}
++<h1>Authors</h1>
++<ul>
++{% for author, articles in authors %}
++    <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
++{% endfor %}
++</ul>
++{% endblock %}
+diff -ruN a/bootstrap2-dark/templates/base.html b/bootstrap2-dark/templates/base.html
+--- a/bootstrap2-dark/templates/base.html	2026-01-09 21:28:16.057304977 +0100
++++ b/bootstrap2-dark/templates/base.html	2026-01-09 21:17:51.101305215 +0100
+@@ -46,9 +46,9 @@
+     <link rel="apple-touch-icon" sizes="72x72" href="{{ SITEURL }}/theme/images/apple-touch-icon-72x72.png">
+     <link rel="apple-touch-icon" sizes="114x114" href="{{ SITEURL }}/theme/images/apple-touch-icon-114x114.png">
+ 
+-    <link href="{{ SITEURL }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
++    <link href="{{ SITEURL }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed">
+     {% if FEED_RSS %}
+-    <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
++    <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
+     {% endif %}
+ 
+   </head>
+@@ -83,9 +83,7 @@
+                   </li>
+               {% endfor %}
+ 
+-                          <ul class="nav pull-right">
+-                                <li><a href="{{ SITEURL }}/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+-                          </ul>
++                          <li class="pull-right"><a href="{{ SITEURL }}/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+ 
+             </ul>
+             <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+@@ -111,12 +109,12 @@
+ 
+       <footer>
+         <address id="about">
+-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
++                Proudly powered by <a href="https://getpelican.com/">Pelican <i class="icon-external-link"></i></a>,
++                                which takes great advantage of <a href="https://www.python.org">Python <i class="icon-external-link"></i></a>.
+         </address><!-- /#about -->
+ 
+-        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
++        <p>The theme is based on <a href="https://getbootstrap.com/">Bootstrap <i class="icon-external-link"></i></a>,
++                   and <a href="https://fontawesome.com/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+       </footer>
+ 
+     </div><!--/.fluid-container-->
