@@ -2,6 +2,15 @@
 
 This theme is based on [bootstrap2-dark](https://github.com/getpelican/pelican-themes/tree/master/bootstrap2-dark) from the pelican-themes repository, with patches applied to fix HTML validation errors and broken links.
 
+## About these fixes
+
+These issues were discovered through automated CI checks using:
+
+- **[html5validator](https://github.com/svenkreiss/html5validator)** - Python wrapper around the Nu Html Checker (v.Nu) that validates HTML5 compliance and detects structural errors like duplicate IDs, invalid nesting, and missing required elements.
+- **[htmltest](https://github.com/wjdp/htmltest)** - Fast HTML link checker that verifies internal and external links, detecting broken URLs and empty href attributes.
+
+Both tools run automatically on every pull request, ensuring HTML validity and link integrity before deployment.
+
 ## Changes from original
 
 ### 1. Duplicate ID Attribute (`id="content"`)
