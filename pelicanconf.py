@@ -23,9 +23,9 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-    ("LinkedIn", "https://www.linkedin.com/in/gianluca-mascolo"),
-    ("Mastodon", "https://mastodon.uno/@gurutech"),
-    ("GitHub", "https://github.com/gianluca-mascolo"),
+    ("linkedin", "https://www.linkedin.com/in/gianluca-mascolo"),
+    ("mastodon", "https://mastodon.uno/@gurutech"),
+    ("github", "https://github.com/gianluca-mascolo"),
 )
 
 DEFAULT_PAGINATION = 10

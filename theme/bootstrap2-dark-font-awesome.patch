@@ -1,0 +1,424 @@
+diff --git a/bootstrap2-dark/static/css/font-awesome.css b/bootstrap2-dark/static/css/font-awesome.css
+deleted file mode 100644
+index 2e86893..0000000
+--- a/bootstrap2-dark/static/css/font-awesome.css
++++ /dev/null
+@@ -1,239 +0,0 @@
+-/*  Font Awesome
+-    the iconic font designed for use with Twitter Bootstrap
+-    -------------------------------------------------------
+-    The full suite of pictographic icons, examples, and documentation
+-    can be found at: http://fortawesome.github.com/Font-Awesome/
+-
+-    License
+-    -------------------------------------------------------
+-    The Font Awesome webfont, CSS, and LESS files are licensed under CC BY 3.0:
+-    http://creativecommons.org/licenses/by/3.0/ A mention of
+-    'Font Awesome - http://fortawesome.github.com/Font-Awesome' in human-readable
+-    source code is considered acceptable attribution (most common on the web).
+-    If human readable source code is not available to the end user, a mention in
+-    an 'About' or 'Credits' screen is considered acceptable (most common in desktop
+-    or mobile software).
+-
+-    Contact
+-    -------------------------------------------------------
+-    Email: dave@davegandy.com
+-    Twitter: http://twitter.com/fortaweso_me
+-    Work: http://lemonwi.se co-founder
+-
+-    */
+-
+-@font-face {
+-    font-family: 'FontAwesome';
+-    src: url('../font/fontawesome-webfont.eot');
+-    src: url('../font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('../font/fontawesome-webfont.woff') format('woff'), url('../font/fontawesome-webfont.ttf') format('truetype'), url('../font/fontawesome-webfont.svgz#FontAwesomeRegular') format('svg'), url('../font/fontawesome-webfont.svg#FontAwesomeRegular') format('svg');
+-    font-weight: normal;
+-    font-style: normal;
+-}
+-/* sprites.less reset */
+-[class^="icon-"], [class*=" icon-"] {
+-    display: inline;
+-    width: auto;
+-    height: auto;
+-    line-height: inherit;
+-    vertical-align: baseline;
+-    background-image: none;
+-    background-position: 0% 0%;
+-    background-repeat: repeat;
+-}
+-li[class^="icon-"], li[class*=" icon-"] {
+-    display: block;
+-}
+-/*  Font Awesome styles
+-    ------------------------------------------------------- */
+-[class^="icon-"]:before, [class*=" icon-"]:before {
+-    font-family: FontAwesome;
+-    font-weight: normal;
+-    font-style: normal;
+-    display: inline-block;
+-    text-decoration: inherit;
+-}
+-a [class^="icon-"], a [class*=" icon-"] {
+-    display: inline-block;
+-    text-decoration: inherit;
+-}
+-/* makes the font 33% larger relative to the icon container */
+-.icon-large:before {
+-    vertical-align: top;
+-    font-size: 1.3333333333333333em;
+-}
+-.btn [class^="icon-"], .btn [class*=" icon-"] {
+-    /* keeps button heights with and without icons the same */
+-    line-height: .9em;
+-}
+-li [class^="icon-"], li [class*=" icon-"] {
+-    display: inline-block;
+-    width: 1.25em;
+-    text-align: center;
+-}
+-li .icon-large[class^="icon-"], li .icon-large[class*=" icon-"] {
+-    /* 1.5 increased font size for icon-large * 1.25 width */
+-    width: 1.875em;
+-}
+-li[class^="icon-"], li[class*=" icon-"] {
+-    margin-left: 0;
+-    list-style-type: none;
+-}
+-li[class^="icon-"]:before, li[class*=" icon-"]:before {
+-    text-indent: -2em;
+-    text-align: center;
+-}
+-li[class^="icon-"].icon-large:before, li[class*=" icon-"].icon-large:before {
+-    text-indent: -1.3333333333333333em;
+-}
+-/*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+-    readers do not read off random characters that represent icons */
+-.icon-glass:before              { content: "\f000"; }
+-.icon-music:before              { content: "\f001"; }
+-.icon-search:before             { content: "\f002"; }
+-.icon-envelope:before           { content: "\f003"; }
+-.icon-heart:before              { content: "\f004"; }
+-.icon-star:before               { content: "\f005"; }
+-.icon-star-empty:before         { content: "\f006"; }
+-.icon-user:before               { content: "\f007"; }
+-.icon-film:before               { content: "\f008"; }
+-.icon-th-large:before           { content: "\f009"; }
+-.icon-th:before                 { content: "\f00a"; }
+-.icon-th-list:before            { content: "\f00b"; }
+-.icon-ok:before                 { content: "\f00c"; }
+-.icon-remove:before             { content: "\f00d"; }
+-.icon-zoom-in:before            { content: "\f00e"; }
+-
+-.icon-zoom-out:before           { content: "\f010"; }
+-.icon-off:before                { content: "\f011"; }
+-.icon-signal:before             { content: "\f012"; }
+-.icon-cog:before                { content: "\f013"; }
+-.icon-trash:before              { content: "\f014"; }
+-.icon-home:before               { content: "\f015"; }
+-.icon-file:before               { content: "\f016"; }
+-.icon-time:before               { content: "\f017"; }
+-.icon-road:before               { content: "\f018"; }
+-.icon-download-alt:before       { content: "\f019"; }
+-.icon-download:before           { content: "\f01a"; }
+-.icon-upload:before             { content: "\f01b"; }
+-.icon-inbox:before              { content: "\f01c"; }
+-.icon-play-circle:before        { content: "\f01d"; }
+-.icon-repeat:before             { content: "\f01e"; }
+-
+-/* \f020 is not a valid unicode character. all shifted one down */
+-.icon-refresh:before            { content: "\f021"; }
+-.icon-list-alt:before           { content: "\f022"; }
+-.icon-lock:before               { content: "\f023"; }
+-.icon-flag:before               { content: "\f024"; }
+-.icon-headphones:before         { content: "\f025"; }
+-.icon-volume-off:before         { content: "\f026"; }
+-.icon-volume-down:before        { content: "\f027"; }
+-.icon-volume-up:before          { content: "\f028"; }
+-.icon-qrcode:before             { content: "\f029"; }
+-.icon-barcode:before            { content: "\f02a"; }
+-.icon-tag:before                { content: "\f02b"; }
+-.icon-tags:before               { content: "\f02c"; }
+-.icon-book:before               { content: "\f02d"; }
+-.icon-bookmark:before           { content: "\f02e"; }
+-.icon-print:before              { content: "\f02f"; }
+-
+-.icon-camera:before             { content: "\f030"; }
+-.icon-font:before               { content: "\f031"; }
+-.icon-bold:before               { content: "\f032"; }
+-.icon-italic:before             { content: "\f033"; }
+-.icon-text-height:before        { content: "\f034"; }
+-.icon-text-width:before         { content: "\f035"; }
+-.icon-align-left:before         { content: "\f036"; }
+-.icon-align-center:before       { content: "\f037"; }
+-.icon-align-right:before        { content: "\f038"; }
+-.icon-align-justify:before      { content: "\f039"; }
+-.icon-list:before               { content: "\f03a"; }
+-.icon-indent-left:before        { content: "\f03b"; }
+-.icon-indent-right:before       { content: "\f03c"; }
+-.icon-facetime-video:before     { content: "\f03d"; }
+-.icon-picture:before            { content: "\f03e"; }
+-
+-.icon-pencil:before             { content: "\f040"; }
+-.icon-map-marker:before         { content: "\f041"; }
+-.icon-adjust:before             { content: "\f042"; }
+-.icon-tint:before               { content: "\f043"; }
+-.icon-edit:before               { content: "\f044"; }
+-.icon-share:before              { content: "\f045"; }
+-.icon-check:before              { content: "\f046"; }
+-.icon-move:before               { content: "\f047"; }
+-.icon-step-backward:before      { content: "\f048"; }
+-.icon-fast-backward:before      { content: "\f049"; }
+-.icon-backward:before           { content: "\f04a"; }
+-.icon-play:before               { content: "\f04b"; }
+-.icon-pause:before              { content: "\f04c"; }
+-.icon-stop:before               { content: "\f04d"; }
+-.icon-forward:before            { content: "\f04e"; }
+-
+-.icon-fast-forward:before       { content: "\f050"; }
+-.icon-step-forward:before       { content: "\f051"; }
+-.icon-eject:before              { content: "\f052"; }
+-.icon-chevron-left:before       { content: "\f053"; }
+-.icon-chevron-right:before      { content: "\f054"; }
+-.icon-plus-sign:before          { content: "\f055"; }
+-.icon-minus-sign:before         { content: "\f056"; }
+-.icon-remove-sign:before        { content: "\f057"; }
+-.icon-ok-sign:before            { content: "\f058"; }
+-.icon-question-sign:before      { content: "\f059"; }
+-.icon-info-sign:before          { content: "\f05a"; }
+-.icon-screenshot:before         { content: "\f05b"; }
+-.icon-remove-circle:before      { content: "\f05c"; }
+-.icon-ok-circle:before          { content: "\f05d"; }
+-.icon-ban-circle:before         { content: "\f05e"; }
+-
+-.icon-arrow-left:before         { content: "\f060"; }
+-.icon-arrow-right:before        { content: "\f061"; }
+-.icon-arrow-up:before           { content: "\f062"; }
+-.icon-arrow-down:before         { content: "\f063"; }
+-.icon-share-alt:before          { content: "\f064"; }
+-.icon-resize-full:before        { content: "\f065"; }
+-.icon-resize-small:before       { content: "\f066"; }
+-.icon-plus:before               { content: "\f067"; }
+-.icon-minus:before              { content: "\f068"; }
+-.icon-asterisk:before           { content: "\f069"; }
+-.icon-exclamation-sign:before   { content: "\f06a"; }
+-.icon-gift:before               { content: "\f06b"; }
+-.icon-leaf:before               { content: "\f06c"; }
+-.icon-fire:before               { content: "\f06d"; }
+-.icon-eye-open:before           { content: "\f06e"; }
+-
+-.icon-eye-close:before          { content: "\f070"; }
+-.icon-warning-sign:before       { content: "\f071"; }
+-.icon-plane:before              { content: "\f072"; }
+-.icon-calendar:before           { content: "\f073"; }
+-.icon-random:before             { content: "\f074"; }
+-.icon-comment:before            { content: "\f075"; }
+-.icon-magnet:before             { content: "\f076"; }
+-.icon-chevron-up:before         { content: "\f077"; }
+-.icon-chevron-down:before       { content: "\f078"; }
+-.icon-retweet:before            { content: "\f079"; }
+-.icon-shopping-cart:before      { content: "\f07a"; }
+-.icon-folder-close:before       { content: "\f07b"; }
+-.icon-folder-open:before        { content: "\f07c"; }
+-.icon-resize-vertical:before    { content: "\f07d"; }
+-.icon-resize-horizontal:before  { content: "\f07e"; }
+-
+-.icon-bar-chart:before          { content: "\f080"; }
+-.icon-twitter-sign:before       { content: "\f081"; }
+-.icon-facebook-sign:before      { content: "\f082"; }
+-.icon-camera-retro:before       { content: "\f083"; }
+-.icon-key:before                { content: "\f084"; }
+-.icon-cogs:before               { content: "\f085"; }
+-.icon-comments:before           { content: "\f086"; }
+-.icon-thumbs-up:before          { content: "\f087"; }
+-.icon-thumbs-down:before        { content: "\f088"; }
+-.icon-star-half:before          { content: "\f089"; }
+-.icon-heart-empty:before        { content: "\f08a"; }
+-.icon-signout:before            { content: "\f08b"; }
+-.icon-linkedin-sign:before      { content: "\f08c"; }
+-.icon-pushpin:before            { content: "\f08d"; }
+-.icon-external-link:before      { content: "\f08e"; }
+-
+-.icon-signin:before             { content: "\f090"; }
+-.icon-trophy:before             { content: "\f091"; }
+-.icon-github-sign:before        { content: "\f092"; }
+-.icon-upload-alt:before         { content: "\f093"; }
+-.icon-lemon:before              { content: "\f094"; }
+diff --git a/bootstrap2-dark/templates/article_infos.html b/bootstrap2-dark/templates/article_infos.html
+index a720b96..de5fcfd 100644
+--- a/bootstrap2-dark/templates/article_infos.html
++++ b/bootstrap2-dark/templates/article_infos.html
+@@ -1,14 +1,14 @@
+ <footer class="post-info">
+ <span class="label">Date</span>
+ <abbr class="published" title="{{ article.date.isoformat() }}">
+-        <i class="icon-calendar"></i>{{ article.locale_date }}
++        <i class="fa-solid fa-calendar-days"></i> {{ article.locale_date }}
+ </abbr>
+ {% if article.author %}
+ <span class="label">By</span>
+-<a href="{{ SITEURL }}/{{ article.author.url }}"><i class="icon-user"></i>{{ article.author }}</a>
++<a href="{{ SITEURL }}/{{ article.author.url }}"><i class="fa-solid fa-user"></i> {{ article.author }}</a>
+ {% endif %}
+ <span class="label">Category</span>
+-<a href="{{ SITEURL }}/{{ article.category.url }}"><i class="icon-folder-open"></i>{{ article.category }}</a>.
++<a href="{{ SITEURL }}/{{ article.category.url }}"><i class="fa-solid fa-folder-open"></i> {{ article.category }}</a>.
+ 
+ {% if PDF_PROCESSOR %}
+ <span class="label">
+diff --git a/bootstrap2-dark/templates/base.html b/bootstrap2-dark/templates/base.html
+index 3aae549..7c229cf 100644
+--- a/bootstrap2-dark/templates/base.html
++++ b/bootstrap2-dark/templates/base.html
+@@ -31,7 +31,7 @@
+      }
+     </style>
+     <link href="{{ SITEURL }}/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+-        <link href="{{ SITEURL }}/theme/css/font-awesome.css" rel="stylesheet">
++        <link href="{{ SITEURL }}/theme/css/fontawesome.min.css" rel="stylesheet">
+ 
+     <link href="{{ SITEURL }}/theme/css/pygments.css" rel="stylesheet">
+ 
+@@ -78,12 +78,12 @@
+               {% for cat, null in categories %}
+                   <li {% if cat == category %}class="active"{% endif %}>
+                     <a href="{{ SITEURL }}/{{ cat.url }}">
+-						<i class="icon-folder-open icon-large"></i>{{ cat }}
++						<i class="fa-solid fa-folder-open fa-lg"></i>{{ cat }}
+ 					</a>
+                   </li>
+               {% endfor %}
+ 
+-                          <li class="pull-right"><a href="{{ SITEURL }}/archives.html"><i class="icon-th-list"></i>Archives</a></li>
++                          <li class="pull-right"><a href="{{ SITEURL }}/archives.html"><i class="fa-solid fa-list"></i> Archives</a></li>
+ 
+             </ul>
+             <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+@@ -109,12 +109,12 @@
+ 
+       <footer>
+         <address id="about">
+-                Proudly powered by <a href="https://getpelican.com/">Pelican <i class="icon-external-link"></i></a>,
+-                                which takes great advantage of <a href="https://www.python.org">Python <i class="icon-external-link"></i></a>.
++                Proudly powered by <a href="https://getpelican.com/">Pelican <i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
++                                which takes great advantage of <a href="https://www.python.org">Python <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
+         </address><!-- /#about -->
+ 
+-        <p>The theme is based on <a href="https://getbootstrap.com/">Bootstrap <i class="icon-external-link"></i></a>,
+-                   and <a href="https://fontawesome.com/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
++        <p>The theme is based on <a href="https://getbootstrap.com/">Bootstrap <i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
++                   and <a href="https://fontawesome.com/">Font-Awesome <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, thanks!</p>
+       </footer>
+ 
+     </div><!--/.fluid-container-->
+diff --git a/bootstrap2-dark/templates/search_sidebar.html b/bootstrap2-dark/templates/search_sidebar.html
+index 24fdaad..cc64a07 100644
+--- a/bootstrap2-dark/templates/search_sidebar.html
++++ b/bootstrap2-dark/templates/search_sidebar.html
+@@ -1,5 +1,5 @@
+ {% if GOOGLE_CUSTOM_SEARCH_SIDEBAR %}
+-<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
++<li class="nav-header"><h4><i class="fa-solid fa-magnifying-glass"></i> Google Search</h4></li>
+ <div id="cse" style="width: 100%;">Loading</div>
+ <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+ <script type="text/javascript">
+diff --git a/bootstrap2-dark/templates/sidebar.html b/bootstrap2-dark/templates/sidebar.html
+index 84b709d..6b42c05 100644
+--- a/bootstrap2-dark/templates/sidebar.html
++++ b/bootstrap2-dark/templates/sidebar.html
+@@ -1,35 +1,35 @@
+ <ul class="nav nav-list">
+ {% if LINKS %}
+-<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
++<li class="nav-header"><h4><i class="fa-solid fa-arrow-up-right-from-square"></i>blogroll</h4></li>
+ {% for name, link in LINKS %}
+-    <li><a href="{{ link }}"><i class="icon-external-link"></i>{{ name }}</a></li>
++    <li><a href="{{ link }}"><i class="fa-solid fa-arrow-up-right-from-square"></i>{{ name }}</a></li>
+ {% endfor %}
+ {% endif %}
+ {% if SOCIAL %}
+-<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+-<li><a href="{{ SITEURL }}/{{ FEED }}" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
++<li class="nav-header"><h4><i class="fa-solid fa-users fa-lg"></i> social</h4></li>
++<li><a href="{{ SITEURL }}/{{ FEED }}" rel="alternate"><i class="fa-solid fa-rss fa-lg"></i>atom feed</a></li>
+ {% if FEED_RSS %}
+-<li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate"><i class="icon-bookmark icon-large"></i>rss feed</a></li>
++<li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate"><i class="fa-solid fa-rss fa-lg"></i>rss feed</a></li>
+ {% endif %}
+ {% for name, link in SOCIAL %}
+-    <li><a href="{{ link }}"><i class="icon-{{ name }}-sign icon-large"></i>{{ name }}</a></li>
++    <li><a href="{{ link }}"><i class="fa-brands fa-{{ name }} fa-lg"></i> {{ name }}</a></li>
+ {% endfor %}
+ {% endif %}
+ 
+-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
++<li class="nav-header"><h4><i class="fa-solid fa-folder fa-lg"></i> Categories</h4></li>
+ {% for cat, null in categories %}
+ <li>
+ <a href="{{ SITEURL }}/{{ cat.url }}">
+-    <i class="icon-folder-open icon-large"></i>{{ cat }}
++    <i class="fa-solid fa-folder-open fa-lg"></i> {{ cat }}
+ </a>
+ </li>
+ {% endfor %}
+ 
+-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
++<li class="nav-header"><h4><i class="fa-solid fa-tags fa-lg"></i> Tags</h4></li>
+ {% for tag in tag_cloud %}
+ <li class="tag-{{ tag.1 }}">
+     <a href="{{ SITEURL }}/{{ tag.0.url }}">
+-        <i class="icon-tag icon-large"></i>{{ tag.0 }}
++        <i class="fa-solid fa-tag fa-lg"></i> {{ tag.0 }}
+     </a>
+ </li>
+ {% endfor %}
+diff --git a/bootstrap2-dark/templates/taglist.html b/bootstrap2-dark/templates/taglist.html
+index b553f7f..d63b677 100644
+--- a/bootstrap2-dark/templates/taglist.html
++++ b/bootstrap2-dark/templates/taglist.html
+@@ -1,6 +1,6 @@
+ {% if article.tags %}
+ <span class="label">Tags</span>
+ {% for tag in article.tags %}
+-	<a href="{{ SITEURL }}/{{ tag.url }}"><i class="icon-tag"></i>{{ tag }}</a>
++	<a href="{{ SITEURL }}/{{ tag.url }}"><i class="fa-solid fa-tag"></i> {{ tag }}</a>
+ {% endfor %}
+ {% endif %}
+diff --git a/bootstrap2-dark/templates/tags.html b/bootstrap2-dark/templates/tags.html
+index 862eff6..55777c6 100644
+--- a/bootstrap2-dark/templates/tags.html
++++ b/bootstrap2-dark/templates/tags.html
+@@ -1,11 +1,11 @@
+ {% extends "base.html" %}
+ {% block content %}
+ <ul>
+-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
++<li class="nav-header"><h4><i class="fa-solid fa-tags fa-lg"></i> Tags</h4></li>
+ {% for tag in tag_cloud %}
+ <li class="tag-{{ tag.1 }}">
+ 	<a href="{{ SITEURL }}/{{ tag.0.url }}">
+-		<i class="icon-tag icon-large"></i>{{ tag.0 }}
++		<i class="fa-solid fa-tag fa-lg"></i> {{ tag.0 }}
+ 	</a>
+ </li>
+ {% endfor %}
+diff --git a/bootstrap2-dark/templates/translations.html b/bootstrap2-dark/templates/translations.html
+index d705533..2f52845 100644
+--- a/bootstrap2-dark/templates/translations.html
++++ b/bootstrap2-dark/templates/translations.html
+@@ -1,6 +1,6 @@
+ {% if article.translations %}
+ <span class="label">Lang</span>
+ {% for translation in article.translations %}
+-	<a href="{{ SITEURL }}/{{ translation.url }}"><i class="icon-edit"></i>{{ translation.lang }}</a>
++	<a href="{{ SITEURL }}/{{ translation.url }}"><i class="fa-solid fa-language"></i> {{ translation.lang }}</a>
+ {% endfor %}
+ {% endif %}
+diff --git a/bootstrap2-dark/templates/twitter_profile.html b/bootstrap2-dark/templates/twitter_profile.html
+index 5d913e9..7327a9e 100644
+--- a/bootstrap2-dark/templates/twitter_profile.html
++++ b/bootstrap2-dark/templates/twitter_profile.html
+@@ -1 +1 @@
+-{% if TWITTER_USERNAME %}<li class="nav-header"><h4><i class="icon-twitter-sign"></i>Twitter</h4></li><script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script><script>new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 4,  interval: 30000,  width: 'auto',  height: 300,  theme: {	shell: {	  background: '#f5f5f5',	  color: '#000000'	},	tweets: {	  background: '#ffffff',	  color: '#000000',	  links: '#1a50a1'	}  },  features: {	scrollbar: false,	loop: false,	live: false,	behavior: 'all'  }}).render().setUser('{{ TWITTER_USERNAME }}').start();</script>{% endif %}
+\ No newline at end of file
++{% if TWITTER_USERNAME %}<li class="nav-header"><h4><i class="fa-brands fa-x-twitter"></i> Twitter</h4></li><script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script><script>new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 4,  interval: 30000,  width: 'auto',  height: 300,  theme: {	shell: {	  background: '#f5f5f5',	  color: '#000000'	},	tweets: {	  background: '#ffffff',	  color: '#000000',	  links: '#1a50a1'	}  },  features: {	scrollbar: false,	loop: false,	live: false,	behavior: 'all'  }}).render().setUser('{{ TWITTER_USERNAME }}').start();</script>{% endif %}
+\ No newline at end of file
