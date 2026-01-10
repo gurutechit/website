@@ -17,7 +17,7 @@ CheckMailto: true
 CheckTel: true
 
 # Check favicon exists
-CheckFavicon: false
+CheckFavicon: true
 
 # Check meta refresh tags
 CheckMetaRefresh: true
