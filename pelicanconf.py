@@ -19,14 +19,13 @@ AUTHOR_FEED_RSS = None
 LINKS = (
     ("Pelican", "https://getpelican.com/"),
     ("Python.org", "https://www.python.org/"),
-    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-    ("You can modify those links in your config file", "#"),
 )
 
 # Social widget
 SOCIAL = (
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
+    ("LinkedIn", "https://www.linkedin.com/in/gianluca-mascolo"),
+    ("Mastodon", "https://mastodon.uno/@gurutech"),
+    ("GitHub", "https://github.com/gianluca-mascolo"),
 )
 
 DEFAULT_PAGINATION = 10
