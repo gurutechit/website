@@ -1,6 +1,6 @@
 {% if article.translations %}
 <span class="label">Lang</span>
 {% for translation in article.translations %}
-	<a href="{{ SITEURL }}/{{ translation.url }}"><i class="icon-edit"></i>{{ translation.lang }}</a>
+	<a href="{{ SITEURL }}/{{ translation.url }}"><i class="fa-solid fa-language"></i> {{ translation.lang }}</a>
 {% endfor %}
 {% endif %}

@@ -31,7 +31,7 @@
      }
     </style>
     <link href="{{ SITEURL }}/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
-        <link href="{{ SITEURL }}/theme/css/font-awesome.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/theme/css/fontawesome.min.css" rel="stylesheet">
 
     <link href="{{ SITEURL }}/theme/css/pygments.css" rel="stylesheet">
 
@@ -78,12 +78,12 @@
               {% for cat, null in categories %}
                   <li {% if cat == category %}class="active"{% endif %}>
                     <a href="{{ SITEURL }}/{{ cat.url }}">
-						<i class="icon-folder-open icon-large"></i>{{ cat }}
+						<i class="fa-solid fa-folder-open fa-lg"></i>{{ cat }}
 					</a>
                   </li>
               {% endfor %}
 
-                          <li class="pull-right"><a href="{{ SITEURL }}/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          <li class="pull-right"><a href="{{ SITEURL }}/archives.html"><i class="fa-solid fa-list"></i> Archives</a></li>
 
             </ul>
             <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
@@ -109,12 +109,12 @@
 
       <footer>
         <address id="about">
-                Proudly powered by <a href="https://getpelican.com/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="https://www.python.org">Python <i class="icon-external-link"></i></a>.
+                Proudly powered by <a href="https://getpelican.com/">Pelican <i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
+                                which takes great advantage of <a href="https://www.python.org">Python <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.
         </address><!-- /#about -->
 
-        <p>The theme is based on <a href="https://getbootstrap.com/">Bootstrap <i class="icon-external-link"></i></a>,
-                   and <a href="https://fontawesome.com/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+        <p>The theme is based on <a href="https://getbootstrap.com/">Bootstrap <i class="fa-solid fa-arrow-up-right-from-square"></i></a>,
+                   and <a href="https://fontawesome.com/">Font-Awesome <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, thanks!</p>
       </footer>
 
     </div><!--/.fluid-container-->
