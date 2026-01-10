@@ -31,6 +31,8 @@ IgnoreURLs:
   - "^https://fonts.gstatic.com"
   # Ignore theme assets - they won't exist until deployment
   - "^https://www.gurutech.it/theme/"
+  # Ignore internal pages checked as external URLs - they may not exist until deployment
+  - "^https://www.gurutech.it/pages/"
 
 # Ignore missing alt attributes (Pelican may generate some images without)
 IgnoreAltMissing: false
