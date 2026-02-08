@@ -1,0 +1,16 @@
+{
+    "basedir": ".",
+    "sitename": "example",
+    "author": "pippo",
+    "lang": "en",
+    "timezone": "Europe/Rome",
+    "siteurl": "",
+    "with_pagination": false,
+    "automation": true,
+    "ftp": false,
+    "ssh": false,
+    "dropbox": false,
+    "s3": false,
+    "cloudfiles": false,
+    "github": false
+}
