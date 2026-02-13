@@ -1,5 +1,5 @@
 Title: Building a Pelican Site with GitHub Pages and Poetry
-Date: 2026-01-10
+Date: 2026-02-13
 Tags: pelican, python, github-pages, github-actions, poetry, devops
 Slug: building-repo
 Lang: en
@@ -33,15 +33,88 @@ Finally If you want to configure your [own domain name](https://docs.github.com/
 
 ## Setting Up the Project
 
-### Installing Poetry
+### Python Poetry
 
-<!-- Explain Poetry and why you chose it over pip/pipenv -->
-<!-- Installation steps -->
+Package dependency and virtual environments management is crucial in Python (as in many modern languages). You can for sure use the old good `pip` tool with `requirements.txt`. Personally I do prefer Poetry because it allows me to manage not only the dependencies (dividing it in devs and program deps) but offers a series of extra tooling from init a repository to publishing packages that makes it my personal choice for every project. Last but not least Python official documentation do not endorse a speficic tool but Poetry is named (among with others) in their [packaging guidelines](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
+
+
+Installation of Python Poetry is straightforward and well documented in the [official documentation](https://python-poetry.org/docs/#installing-with-the-official-installer) so please refer to it to get a working installation.
 
 ### Initializing the Pelican Project
 
-<!-- Steps to create the project -->
-<!-- Configuration choices you made -->
+#### GitHub repository
+
+Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pickup a repo name e.g. `pelican-site` and remeber to leave it as "Public" visibility (this is required to use GitHub pages). It should be the default but be sure to select on other options: "No template", "No license", "No .gitignore" and do not add a README, you will do all of this later. You will also receive instructions to upload content to the new created repository and this will be done at the end of this tutorial.
+
+    :::bash
+    mkdir pelican-site # usually the repo name you choose on GitHub above
+    cd pelican-site
+    git init
+    git branch -M main
+    git status
+
+You will see an output like this if everything is successful:
+
+```
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+#### Poetry project initialization
+
+Use `poetry init` to initialize a project with Pelican dependencies and tooling. Use the `markdown` extension if you wants to write contents in Markdown. The toml-cli dependency is not strictly required but it will be used during this initial configuration to manage `pyproject.toml` settings.
+
+    :::bash
+    poetry init -n \
+        --name "pelican-site" \
+        --description "Pelican website with GitHub pages" \
+        --python=">=3.10,<4.0" \
+        --dev-dependency="pelican[markdown]" \
+        --dev-dependency=tzdata \
+        --dev-dependency=toml-cli
+
+Poetry normally manage virtualenvs in your home directory. For better compatibility with GitHub is better to install the `.venv` inside the repository root itself (adding it to .gitignore).
+
+    :::bash
+    poetry config --local virtualenvs.in-project true
+
+Now create a default README (You can edit later).
+
+    :::bash
+    echo -e "# Pelican Site\n\nWelcome" > README.md
+
+It's now time to install the specified dependencies with poetry install. Becasue we are not creating any Python package but we just want to manage dependencies the `--no-root` is required or poetry will issue an error.
+
+    :::bash
+    poetry install --no-root
+
+To disable package mode completely in poetry (and avoid specifying --no-root) we need to add the following section to `pyproject.toml`
+
+    :::toml
+    [tool.poetry]
+    package-mode = false
+
+You can do it with your favorite editor or just use the toml-cli installed inside our virtualenv like this:
+
+    :::bash
+    poetry run toml add_section --toml-path pyproject.toml tool.poetry
+    poetry run toml set --toml-path pyproject.toml --to-bool tool.poetry.package-mode false
+
+Finally you will need a .gitignore for Python projects to be installed inside the repository. My suggestion it to use the one created by GitHub that you can download from [github/gitignore](https://github.com/github/gitignore/blob/main/Python.gitignore). Just download the raw file and save it as .gitignore inside you current pelican-site directory. Since this repository is using pelican the `output` directory (where the content is generated) must be ignored as well.
+
+    :::bash
+    curl -o .gitignore -sSL https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Python.gitignore
+    echo -e "\n# Pelican site generator\noutput" >>.gitignore
+
+#### Pelican project initialization
+
+```bash
+git remote add origin git@github.com:your-username/pelican-site.git
+git push -u origin main
+```
 
 ## Project Structure
 
