@@ -9,7 +9,7 @@ Status: draft
 ## Introduction
 
 I decided to renew my old good website with the beginning of this New Year 2026. After all my own domain name gurutech.it is turning 25 and deserves it.
-There are for sure thousands of solutions to host a website, free or paid, but after all I am a developer and I would like to explore something more DevOps oriented. Since I already have my code hosted on GitHub I decided to go with GitHub Pages that are [free for public repositories](https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-free-for-personal-accounts) and can host on it [static content](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#about-github-pages).
+There are thousands of solutions to host a website, free or paid, but as a developer I wanted to explore something more DevOps oriented. Since I already have my code hosted on GitHub, I decided to go with GitHub Pages which is [free for public repositories](https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-free-for-personal-accounts) and can host [static content](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#about-github-pages).
 So the final choice can be to write static content by myself in 90s style or go with a [static site generator](https://jamstack.org/generators/). There are easy and popular choices like Jekyll or Hugo but as Python oriented developer I picked up [Pelican](https://getpelican.com) because it seems to be supported enough and actively maintained with a background community.
 
 ## Prerequisites
@@ -22,7 +22,7 @@ So the final choice can be to write static content by myself in 90s style or go 
 
 ### Optional Requirements
 
-- Poetry[^1] to manage Pyhton dependencies
+- Poetry[^1] to manage Python dependencies
 - GitHub Actions[^2] to automate publishing of content
 - Domain[^3] name to have your custom domain
 
@@ -30,13 +30,13 @@ So the final choice can be to write static content by myself in 90s style or go 
 
 Generally speaking a good knowledge of Linux and Python is recommended especially to be able to solve issues when something goes wrong (_"Anything that can go wrong will go wrong." (Murphy's Law)_).  
 A basic knowledge of [GitHub Actions](https://docs.github.com/en/actions/get-started/quickstart) and the mechanism of CI/CD will be useful as well to understand automation processes.
-Finally If you want to configure your [own domain name](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) you must know how to configure DNS records with your provider/registar.
+Finally if you want to configure your [own domain name](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) you must know how to configure DNS records with your provider/registrar.
 
 ## Setting Up the Project
 
 ### Python Poetry
 
-Package dependency and virtual environments management is crucial in Python (as in many modern languages). You can for sure use the old good `pip` tool with `requirements.txt`. Personally I do prefer Poetry because it allows me to manage not only the dependencies (dividing it in devs and program deps) but offers a series of extra tooling from init a repository to publishing packages that makes it my personal choice for every project. Last but not least Python official documentation do not endorse a speficic tool but Poetry is named (among with others) in their [packaging guidelines](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
+Package dependency and virtual environments management is crucial in Python (as in many modern languages). You can for sure use the old good `pip` tool with `requirements.txt`. Personally I prefer Poetry because it manages not only dependencies (separating dev and runtime deps) but also offers extra tooling from initializing a repository to publishing packages. Last but not least Python official documentation does not endorse a specific tool but Poetry is named (among others) in their [packaging guidelines](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
 
 
 Installation of Python Poetry is straightforward and well documented in the [official documentation](https://python-poetry.org/docs/#installing-with-the-official-installer) so please refer to it to get a working installation.
@@ -45,7 +45,7 @@ Installation of Python Poetry is straightforward and well documented in the [off
 
 #### GitHub repository
 
-Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pickup a repo name e.g. `pelican-site` and remeber to leave it as "Public" visibility (this is required to use GitHub pages). It should be the default but be sure to select on other options: "No template", "No license", "No .gitignore" and do not add a README, you will do all of this later. You will also receive instructions to upload content to the new created repository and this will be done at the end of this tutorial.
+Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pick a repo name e.g. `pelican-site` and remember to leave it as "Public" visibility (this is required to use GitHub Pages). It should be the default, but make sure to select: "No template", "No license", "No .gitignore", and do not add a README—you will do all of this later. You will also receive instructions to upload content to the new created repository and this will be done at the end of this tutorial.
 
     :::bash
     mkdir pelican-site # usually the repo name you choose on GitHub above
@@ -66,7 +66,7 @@ nothing to commit (create/copy files and use "git add" to track)
 
 #### Poetry project initialization
 
-Use `poetry init` to initialize a project with Pelican dependencies and tooling. Use the `markdown` extension if you wants to write contents in Markdown. The toml-cli dependency is not strictly required but it will be used during this initial configuration to manage `pyproject.toml` settings.
+Use `poetry init` to initialize a project with Pelican dependencies and tooling. Use the `markdown` extension if you want to write contents in Markdown. The toml-cli dependency is not strictly required but it will be used during this initial configuration to manage `pyproject.toml` settings.
 
     :::bash
     poetry init -n \
@@ -77,17 +77,17 @@ Use `poetry init` to initialize a project with Pelican dependencies and tooling.
         --dev-dependency=tzdata \
         --dev-dependency=toml-cli
 
-Poetry normally manage virtualenvs in your home directory. For better compatibility with GitHub is better to install the `.venv` inside the repository root itself (adding it to .gitignore).
+Poetry normally manages virtualenvs in your home directory. For better compatibility with GitHub it is better to install the `.venv` inside the repository root itself (adding it to .gitignore).
 
     :::bash
     poetry config --local virtualenvs.in-project true
 
-Now create a default README (You can edit later).
+Now create a default README (you can edit later).
 
     :::bash
     echo -e "# Pelican Site\n\nWelcome" > README.md
 
-It's now time to install the specified dependencies with poetry install. Becasue we are not creating any Python package but we just want to manage dependencies the `--no-root` is required or poetry will issue an error.
+It's now time to install the specified dependencies with poetry install. Because we are not creating any Python package but we just want to manage dependencies the `--no-root` is required or poetry will issue an error.
 
     :::bash
     poetry install --no-root
@@ -104,7 +104,7 @@ You can do it with your favorite editor or just use the toml-cli installed insid
     poetry run toml add_section --toml-path pyproject.toml tool.poetry
     poetry run toml set --toml-path pyproject.toml --to-bool tool.poetry.package-mode false
 
-Finally you will need a .gitignore for Python projects to be installed inside the repository. My suggestion it to use the one created by GitHub that you can download from [github/gitignore](https://github.com/github/gitignore/blob/main/Python.gitignore). Just download the raw file and save it as .gitignore inside you current pelican-site directory. Since this repository is using pelican the `output` directory (where the content is generated) must be ignored as well.
+Finally you will need a .gitignore for Python projects to be installed inside the repository. My suggestion is to use the one created by GitHub that you can download from [github/gitignore](https://github.com/github/gitignore/blob/main/Python.gitignore). Just download the raw file and save it as .gitignore inside your current pelican-site directory. Since this repository is using Pelican the `output` directory (where the content is generated) must be ignored as well.
 
     :::bash
     curl -o .gitignore -sSL https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Python.gitignore
@@ -138,13 +138,13 @@ Your repository will contain the following files:
     ls --file-type -1A
 
 ```text
-    .git/
-    .gitignore
-    .venv/
-    README.md
-    poetry.lock
-    poetry.toml
-    pyproject.toml
+.git/
+.gitignore
+.venv/
+README.md
+poetry.lock
+poetry.toml
+pyproject.toml
 ```
 
 Let's commit it:
@@ -228,13 +228,13 @@ Check now the content of the output/ directory to confirm the above command work
     ls --file-type -1A output/
 
 ```text
-    archives.html
-    authors.html
-    categories.html
-    feeds/
-    index.html
-    tags.html
-    theme/
+archives.html
+authors.html
+categories.html
+feeds/
+index.html
+tags.html
+theme/
 ```
 
 Last but not least you can serve the website locally and check it with your browser with:
@@ -340,8 +340,8 @@ and you can finally push to remote repository before going to the next step:
 <!-- - [GitHub Pages Documentation](https://docs.github.com/en/pages) -->
 
 
-If you are not comfortable with Github actions or you can run generation locally and fallback to basic GH page deployment of static content from a branch
+If you are not comfortable with GitHub Actions you can run generation locally and fallback to basic GH Pages deployment of static content from a branch.
 
-[^1]: You can always manage Python dependencies manually using pip but it is better to [use a dedicaded tool](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
-[^2]: Alternativaly you can quickstart running Pelican locally and publish content of `output/` directory with [a branch deployment](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#troubleshooting-publishing-from-a-branch)
-[^3]: If you don't have a domain name you can use GH pages with the included _\<username\>_.github.io subdomain.
+[^1]: You can always manage Python dependencies manually using pip but it is better to [use a dedicated tool](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
+[^2]: Alternatively you can quickstart running Pelican locally and publish content of `output/` directory with [a branch deployment](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#troubleshooting-publishing-from-a-branch)
+[^3]: If you don't have a domain name you can use GH Pages with the included <username\>.github.io subdomain.
