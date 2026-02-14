@@ -18,6 +18,7 @@ So the final choice can be to write static content by myself in 90s style or go 
 - GitHub Account to host website
 - Linux terminal skills to run commands
 - Python to run Pelican generator
+- Git is already configured on your computer
 
 ### Optional Requirements
 
@@ -109,29 +110,186 @@ Finally you will need a .gitignore for Python projects to be installed inside th
     curl -o .gitignore -sSL https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Python.gitignore
     echo -e "\n# Pelican site generator\noutput" >>.gitignore
 
-#### Pelican project initialization
+If everything was successful you should be able to get virtualenv information with
 
-```bash
-git remote add origin git@github.com:your-username/pelican-site.git
-git push -u origin main
+    :::bash
+    poetry env info
+
+and get an output like this:
+
+    :::text
+    Virtualenv
+    Python:         3.12.12
+    Implementation: CPython
+    Path:           /home/develop/gurutech-website/.venv
+    Executable:     /home/develop/gurutech-website/.venv/bin/python
+    Valid:          True
+
+    Base
+    Platform:   linux
+    OS:         posix
+    Python:     3.12.12
+    Path:       /usr
+    Executable: /usr/bin/python3.12
+
+Your repository will contain the following files:
+
+    :::bash
+    ls --file-type -1A
+
+```text
+    .git/
+    .gitignore
+    .venv/
+    README.md
+    poetry.lock
+    poetry.toml
+    pyproject.toml
 ```
 
-## Project Structure
+Let's commit it:
 
-<!-- Explain the directory layout -->
-<!-- Key files: pelicanconf.py, publishconf.py, content/, theme/ -->
+    :::bash
+    git add .gitignore README.md poetry.lock poetry.toml pyproject.toml
+    git commit -m "poetry setup"
 
-## Configuration
+#### Pelican project initialization
 
-### Development vs Production Settings
+You are now ready to [kickstart](https://docs.getpelican.com/en/latest/install.html#kickstart-your-site) your site. Since we are using poetry you must run the `pelican-quickstart` with:
 
-<!-- Explain the dual configuration model -->
-<!-- pelicanconf.py for local development -->
-<!-- publishconf.py for production -->
+    :::bash
+    poetry run pelican-quickstart
 
-### Customizing the Theme
+You will be asked the following questions. Beside of the defaults what is really **IMPORTANT** to specify is:
 
-<!-- Any theme modifications you made -->
+- the URL prefix in the format `https://your-github-username.github.io` (or use a [custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site))
+- Generate `tasks.py` and `Makefile` for automation (answer yes)
+- You can answer no to all other questions about uploading the website, including the GitHub pages that will be managed later with a workflow
+
+```text
+Welcome to pelican-quickstart v4.11.0.post0.
+This script will help you create a new Pelican-based website.
+Please answer the following questions so this script can generate the files
+needed by Pelican.
+Where do you want to create your new web site? [.]
+What will be the title of this web site? pelican-site
+Who will be the author of this web site? gurutech
+What will be the default language of this web site? [C] en
+Do you want to specify a URL prefix? e.g., https://example.com   (Y/n) y
+What is your URL prefix? (see above example; no trailing slash) https://github-username.github.io
+Do you want to enable article pagination? (Y/n) y
+How many articles per page do you want? [10]
+What is your time zone? [Europe/Rome]
+Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n) y
+Do you want to upload your website using FTP? (y/N) n
+Do you want to upload your website using SSH? (y/N) n
+Do you want to upload your website using Dropbox? (y/N) n
+Do you want to upload your website using S3? (y/N) n
+Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+Do you want to upload your website using GitHub Pages? (y/N) n
+Done. Your new project is available at /usr/tmp/www-CxJTHv
+```
+
+You will now have the following files in your repository (notice pelicanconf.py, publishconf.py and Makefile)
+
+    :::bash
+    ls --file-type -1A
+
+```text
+.git/
+.gitignore
+.venv/
+Makefile
+README.md
+content/
+output/
+pelicanconf.py
+poetry.lock
+poetry.toml
+publishconf.py
+pyproject.toml
+tasks.py
+```
+
+You can now generate and serve the example configuration site with:
+
+    :::bash
+    poetry run make publish
+
+```text
+poetry run "pelican" "/usr/tmp/www-3aXyxW/content" -o "/usr/tmp/www-3aXyxW/output" -s "/usr/tmp/www-3aXyxW/publishconf.py"
+[15:48:16] WARNING  Feeds generated without SITEURL set properly may not be valid   settings.py:679
+Done: Processed 0 articles, 0 drafts, 0 hidden articles, 0 pages, 0 hidden pages and 0 draft pages in 0.03 seconds.
+```
+
+Check now the content of the output/ directory to confirm the above command worked:
+
+    :::bash
+    ls --file-type -1A output/
+
+```text
+    archives.html
+    authors.html
+    categories.html
+    feeds/
+    index.html
+    tags.html
+    theme/
+```
+
+Last but not least you can serve the website locally and check it with your browser with:
+
+    :::bash
+    poetry run make serve
+
+```text
+    poetry run "pelican" -l "/usr/tmp/www-3aXyxW/content" -o "/usr/tmp/www-3aXyxW/output" -s "/usr/tmp/www-3aXyxW/pelicanconf.py"
+    Serving site at: http://127.0.0.1:8000 - Tap CTRL-C to stop
+    [15:48:59] INFO     "GET / HTTP/1.1" 200 -          server.py:126
+    INFO     "GET /theme/css/main.css HTTP/1.1" 200 -   server.py:126
+    INFO     "GET /theme/css/reset.css HTTP/1.1" 200 -  server.py:126
+```
+
+Point your browser to [http://localhost:8000](http://127.0.0.1:8000) and you will see the site up and running.
+
+Finally you can avoid prepending `poetry run` to make command modifying the `Makefile` targets. Check the current pelican targets:
+
+    :::bash
+    grep --no-group-separator -B1 -F '$(PELICAN)' Makefile
+
+```text
+html:
+    "$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
+regenerate:
+    "$(PELICAN)" -r "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
+serve:
+    "$(PELICAN)" -l "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
+serve-global:
+    "$(PELICAN)" -l "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b $(SERVER)
+devserver:
+    "$(PELICAN)" -lr "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
+devserver-global:
+    "$(PELICAN)" -lr "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b 0.0.0.0
+publish:
+    "$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
+```
+
+It will be enough to add `poetry run` in front of every `$(PELICAN)` command. You can do it with your editor or with sed search and replace:
+
+    :::bash
+    sed -ri 's;("\$\(PELICAN\)");poetry run \1;g' Makefile
+
+It's time to commit the pelican setup:
+
+    :::bash
+    git add Makefile pelicanconf.py publishconf.py tasks.py
+    git commit -m "pelican setup"
+
+and you can finally push to remote repository before going to the next step:
+
+    :::bash
+    git remote add origin git@github.com:your-username/pelican-site.git
+    git push -u origin main
 
 ## GitHub Pages Setup
 
