@@ -295,20 +295,116 @@ and you can finally push to remote repository before going to the next step:
 
 ### Repository Configuration
 
-<!-- How to set up the repo for GitHub Pages -->
-<!-- Branch settings, custom domain (CNAME) -->
+You need to enable your repository `pelican-site` to be hosted on GitHub Pages:
+
+- Go to `https://github.com/your-username/pelican-site`
+- Open Settings
+- Navigate to Pages (under "Code and automation")
+- In the "Build and deployment" section, select source: "GitHub Actions"
+- Now in the left sidebar, click "Environments"
+- Verify that an environment named `github-pages` has been created
+- The environment `github-pages` contains just one protection rule:
+  * Deployment branches and tags is restricted to "Selected branches and tags"
+  * Only branch `main` is allowed
 
 ## Automating Deployment with GitHub Actions
 
 ### The Workflow File
 
-<!-- Explain the pelican-deploy.yml workflow -->
-<!-- Triggers, steps, secrets needed -->
+Now you need a GitHub workflow to deploy your website. You can download the one I use for this website from [here](https://github.com/gurutechit/website/blob/main/.github/workflows/pelican-deploy.yml). Let's analyze the main points of it in the snippet below.
 
-### Branch Protection and PR Workflow
+    #!yaml
+    name: Deploy Pelican to GitHub Pages
 
-<!-- Why you chose squash merges -->
-<!-- Protected branch settings -->
+    on:
+      push:
+        branches: ["main"]
+        paths:
+          - 'content/**'
+          - 'pelicanconf.py'
+          - 'publishconf.py'
+          - 'theme/**'
+          - 'pyproject.toml'
+          - 'poetry.lock'
+      workflow_dispatch:
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+
+          - name: Set up Python
+            uses: actions/setup-python@v6
+            with:
+              python-version: '3.11'
+
+          - name: Set up Poetry
+            uses: abatilo/actions-poetry@v4
+
+          - name: Install dependencies
+            run: poetry install
+
+          - name: Build
+            run: make publish
+
+          - name: Upload artifact
+            uses: actions/upload-pages-artifact@v4
+            with:
+              path: ./output
+
+      deploy:
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
+
+What it will do:
+
+**Triggers (lines 5-12):**
+
+- On line 5 this workflow will be triggered only on commits to `main` branch
+- On lines 6-12 this workflow will be triggered only on commits of the matching paths:
+  * When the `content` or `theme` changes
+  * When the Pelican configuration changes (`pelicanconf.py`, `publishconf.py`)
+  * When `pyproject.toml` or `poetry.lock` changes e.g. because of an update to Pelican version
+
+**Permissions (lines 15-18):**
+
+- `contents: read` - allows the workflow to checkout the repository
+- `pages: write` - allows publishing to GitHub Pages
+- `id-token: write` - required for OIDC authentication with GitHub Pages
+
+**Concurrency (lines 20-22):**
+
+- `group: "pages"` - ensures only one Pages deployment runs at a time
+- `cancel-in-progress: false` - prevents canceling a running deployment if a new one is queued
+
+**Job `build` (lines 25-47):**
+
+- There is a standard setup of Python/Poetry
+- On line 42 run `make publish` like you would do locally to generate the `output` directory
+- On lines 44-47 upload the `output` directory to a GitHub Pages artifact
+
+**Job `deploy` (lines 49-58):**
+
+- On line 50-51 the `environment: name: github-pages` links this job to the protected environment configured in repository settings
+- On line 54 the `needs: build` ensures this job waits for the build job to complete
+- On lines 56-58 the action `deploy-pages` deploys the artifact uploaded by the previous job to GitHub Pages
 
 ## Development Workflow
 
@@ -340,7 +436,7 @@ and you can finally push to remote repository before going to the next step:
 <!-- - [GitHub Pages Documentation](https://docs.github.com/en/pages) -->
 
 
-If you are not comfortable with GitHub Actions you can run generation locally and fallback to basic GH Pages deployment of static content from a branch.
+## _Notes_
 
 [^1]: You can always manage Python dependencies manually using pip but it is better to [use a dedicated tool](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
 [^2]: Alternatively you can quickstart running Pelican locally and publish content of `output/` directory with [a branch deployment](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#troubleshooting-publishing-from-a-branch)
