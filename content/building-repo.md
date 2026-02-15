@@ -1,10 +1,10 @@
 Title: Building a Pelican Site with GitHub Pages and Poetry
-Date: 2026-02-13
+Date: 2026-02-15
 Tags: pelican, python, github-pages, github-actions, poetry, devops
 Slug: building-repo
 Lang: en
 Category: Tutorial
-Status: draft
+Status: published
 
 ## Introduction
 
@@ -46,7 +46,7 @@ Installation of Python Poetry is straightforward and well documented in the [off
 
 #### GitHub repository
 
-Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pick a repo name e.g. `pelican-site` and remember to leave it as "Public" visibility (this is required to use GitHub Pages). It should be the default, but make sure to select: "No template", "No license", "No .gitignore", and do not add a README—you will do all of this later. You will also receive instructions to upload content to the newly created repository and this will be done at the end of this tutorial.
+Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pick a repo name e.g. `pelican-site` and remember to leave it as "Public" visibility (this is required to use GitHub Pages). It should be the default, but make sure to select: "No template", "No license", "No .gitignore", and do not add a README, you will do all of this later. You will also receive instructions to upload content to the newly created repository and this will be done at the end of this tutorial.
 
     :::bash
     mkdir pelican-site # usually the repo name you choose on GitHub above
@@ -406,6 +406,19 @@ What it will do:
 - On line 50-51 the `environment: name: github-pages` links this job to the protected environment configured in repository settings
 - On line 54 the `needs: build` ensures this job waits for the build job to complete
 - On lines 56-58 the action `deploy-pages` deploys the artifact uploaded by the previous job to GitHub Pages
+
+Save this workflow file to your repository:
+
+    :::bash
+    mkdir -p .github/workflows
+    curl -o .github/workflows/pelican-deploy.yml -sSL https://raw.githubusercontent.com/gurutechit/website/main/.github/workflows/pelican-deploy.yml
+
+Commit and push the workflow:
+
+    :::bash
+    git add .github/workflows/pelican-deploy.yml
+    git commit -m "Add GitHub Pages deploy workflow"
+    git push
 
 ## Development Workflow
 
