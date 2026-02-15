@@ -15,6 +15,7 @@ So the final choice can be to write static content by myself in 90s style or go 
 ## Prerequisites
 
 ### Mandatory Requirements
+
 - GitHub Account to host website
 - Linux terminal skills to run commands
 - Python to run Pelican generator
@@ -108,7 +109,7 @@ Finally you will need a .gitignore for Python projects to be installed inside th
 
     :::bash
     curl -o .gitignore -sSL https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Python.gitignore
-    echo -e "\n# Pelican site generator\noutput" >>.gitignore
+    echo -e "\n# Pelican site generator\noutput" >> .gitignore
 
 If everything was successful you should be able to get virtualenv information with
 
@@ -187,10 +188,10 @@ Do you want to upload your website using Dropbox? (y/N) n
 Do you want to upload your website using S3? (y/N) n
 Do you want to upload your website using Rackspace Cloud Files? (y/N) n
 Do you want to upload your website using GitHub Pages? (y/N) n
-Done. Your new project is available at /usr/tmp/www-CxJTHv
+Done. Your new project is available at /home/develop/gurutech-website
 ```
 
-You will now have the following files in your repository (notice pelicanconf.py, publishconf.py and Makefile)
+You will now have the following files in your repository (notice `pelicanconf.py`, `publishconf.py`, `tasks.py` and `Makefile`)
 
     :::bash
     ls --file-type -1A
@@ -217,7 +218,7 @@ You can now generate and serve the example configuration site with:
     poetry run make publish
 
 ```text
-poetry run "pelican" "/usr/tmp/www-3aXyxW/content" -o "/usr/tmp/www-3aXyxW/output" -s "/usr/tmp/www-3aXyxW/publishconf.py"
+poetry run "pelican" "/home/develop/gurutech-website/content" -o "/home/develop/gurutech-website/output" -s "/home/develop/gurutech-website/publishconf.py"
 [15:48:16] WARNING  Feeds generated without SITEURL set properly may not be valid   settings.py:679
 Done: Processed 0 articles, 0 drafts, 0 hidden articles, 0 pages, 0 hidden pages and 0 draft pages in 0.03 seconds.
 ```
@@ -243,7 +244,7 @@ Last but not least you can serve the website locally and check it with your brow
     poetry run make serve
 
 ```text
-    poetry run "pelican" -l "/usr/tmp/www-3aXyxW/content" -o "/usr/tmp/www-3aXyxW/output" -s "/usr/tmp/www-3aXyxW/pelicanconf.py"
+    poetry run "pelican" -l "/home/develop/gurutech-website/content" -o "/home/develop/gurutech-website/output" -s "/home/develop/gurutech-website/pelicanconf.py"
     Serving site at: http://127.0.0.1:8000 - Tap CTRL-C to stop
     [15:48:59] INFO     "GET / HTTP/1.1" 200 -          server.py:126
     INFO     "GET /theme/css/main.css HTTP/1.1" 200 -   server.py:126
