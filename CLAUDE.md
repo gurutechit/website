@@ -64,3 +64,52 @@ poetry install
 - Main branch is **protected** - all changes must go through pull requests
 - PRs must be **squash merged** (merge commits are disabled)
 - Use `gh pr merge --squash` when merging PRs
+
+## Plugins
+
+- **sitemap** - Generates XML sitemap at `sitemap.xml`
+- **seo** - Adds Open Graph and Twitter Card meta tags
+
+## Markdown Extensions
+
+Configured in `pelicanconf.py` under `MARKDOWN`:
+- **codehilite** - Syntax highlighting (uses Pygments with `highlight` CSS class)
+- **extra** - Tables, fenced code blocks, footnotes, attribute lists
+- **meta** - Frontmatter metadata parsing
+
+## CI/Testing
+
+Pull requests run automated checks via `.github/workflows/ci.yml`:
+- HTML5 validation (`html5validator`)
+- Link checking (`htmltest` - config in `.htmltest.yml`)
+
+Run locally:
+```bash
+poetry run html5validator --root output/
+```
+
+## Theme
+
+Custom theme in `theme/` based on `bootstrap2-dark`. Key directories:
+- `theme/templates/` - Jinja2 templates
+- `theme/static/css/` - Bootstrap dark + Pygments highlighting
+- `theme/static/js/` - jQuery, Bootstrap JS
+
+## Content Metadata
+
+Article/page frontmatter fields:
+```markdown
+Title: Article Title
+Date: 2026-02-13
+Tags: tag1, tag2
+Slug: article-slug
+Category: Category Name
+Status: draft | published
+Lang: en | it
+```
+
+## Scripts
+
+Automation scripts in `scripts/`:
+- `pelican_automated_install.py` - Automated Pelican setup from JSON config
+- `bootstrap-website.sh` - Website initialization
