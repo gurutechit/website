@@ -27,7 +27,7 @@ So the final choice can be to write static content by myself in 90s style or go 
 - GitHub Actions[^2] to automate publishing of content
 - Domain[^3] name to have your custom domain
 
-## Desired skills
+## Desired Skills
 
 Generally speaking a good knowledge of Linux and Python is recommended especially to be able to solve issues when something goes wrong (_"Anything that can go wrong will go wrong." (Murphy's Law)_).  
 A basic knowledge of [GitHub Actions](https://docs.github.com/en/actions/get-started/quickstart) and the mechanism of CI/CD will be useful as well to understand automation processes.
@@ -37,7 +37,7 @@ Finally if you want to configure your [own domain name](https://docs.github.com/
 
 ### Python Poetry
 
-Package dependency and virtual environments management is crucial in Python (as in many modern languages). You can for sure use the old good `pip` tool with `requirements.txt`. Personally I prefer Poetry because it manages not only dependencies (separating dev and runtime deps) but also offers extra tooling from initializing a repository to publishing packages. Last but not least Python official documentation does not endorse a specific tool but Poetry is named (among others) in their [packaging guidelines](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
+Package dependency and virtual environments management is crucial in Python (as in many modern languages). You can for sure use the old good `pip` tool with `requirements.txt`. Personally I prefer Poetry because it manages not only dependencies (separating dev and runtime deps) but also offers extra tooling from initializing a repository to publishing packages. Last but not least, Python official documentation does not endorse a specific tool but Poetry is named (among others) in their [packaging guidelines](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
 
 
 Installation of Python Poetry is straightforward and well documented in the [official documentation](https://python-poetry.org/docs/#installing-with-the-official-installer) so please refer to it to get a working installation.
@@ -46,7 +46,7 @@ Installation of Python Poetry is straightforward and well documented in the [off
 
 #### GitHub repository
 
-Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pick a repo name e.g. `pelican-site` and remember to leave it as "Public" visibility (this is required to use GitHub Pages). It should be the default, but make sure to select: "No template", "No license", "No .gitignore", and do not add a README—you will do all of this later. You will also receive instructions to upload content to the new created repository and this will be done at the end of this tutorial.
+Let's start by creating a new GitHub repository by visiting [https://github.com/new](https://github.com/new). Pick a repo name e.g. `pelican-site` and remember to leave it as "Public" visibility (this is required to use GitHub Pages). It should be the default, but make sure to select: "No template", "No license", "No .gitignore", and do not add a README—you will do all of this later. You will also receive instructions to upload content to the newly created repository and this will be done at the end of this tutorial.
 
     :::bash
     mkdir pelican-site # usually the repo name you choose on GitHub above
@@ -67,7 +67,7 @@ nothing to commit (create/copy files and use "git add" to track)
 
 #### Poetry project initialization
 
-Use `poetry init` to initialize a project with Pelican dependencies and tooling. Use the `markdown` extension if you want to write contents in Markdown. The toml-cli dependency is not strictly required but it will be used during this initial configuration to manage `pyproject.toml` settings.
+Use `poetry init` to initialize a project with Pelican dependencies and tooling. Use the `markdown` extension if you want to write content in Markdown. The toml-cli dependency is not strictly required but it will be used during this initial configuration to manage `pyproject.toml` settings.
 
     :::bash
     poetry init -n \
@@ -161,7 +161,7 @@ You are now ready to [kickstart](https://docs.getpelican.com/en/latest/install.h
     :::bash
     poetry run pelican-quickstart
 
-You will be asked the following questions. Beside of the defaults what is really **IMPORTANT** to specify is:
+You will be asked the following questions. Besides the defaults what is really **IMPORTANT** to specify is:
 
 - the URL prefix in the format `https://your-github-username.github.io` (or use a [custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site))
 - Generate `tasks.py` and `Makefile` for automation (answer yes)
@@ -244,16 +244,16 @@ Last but not least you can serve the website locally and check it with your brow
     poetry run make serve
 
 ```text
-    poetry run "pelican" -l "/home/develop/gurutech-website/content" -o "/home/develop/gurutech-website/output" -s "/home/develop/gurutech-website/pelicanconf.py"
-    Serving site at: http://127.0.0.1:8000 - Tap CTRL-C to stop
-    [15:48:59] INFO     "GET / HTTP/1.1" 200 -          server.py:126
-    INFO     "GET /theme/css/main.css HTTP/1.1" 200 -   server.py:126
-    INFO     "GET /theme/css/reset.css HTTP/1.1" 200 -  server.py:126
+poetry run "pelican" -l "/home/develop/gurutech-website/content" -o "/home/develop/gurutech-website/output" -s "/home/develop/gurutech-website/pelicanconf.py"
+Serving site at: http://127.0.0.1:8000 - Tap CTRL-C to stop
+[15:48:59] INFO     "GET / HTTP/1.1" 200 -          server.py:126
+INFO     "GET /theme/css/main.css HTTP/1.1" 200 -   server.py:126
+INFO     "GET /theme/css/reset.css HTTP/1.1" 200 -  server.py:126
 ```
 
 Point your browser to [http://localhost:8000](http://127.0.0.1:8000) and you will see the site up and running.
 
-Finally you can avoid prepending `poetry run` to make command modifying the `Makefile` targets. Check the current pelican targets:
+Finally you can avoid prepending `poetry run` to make commands by modifying the `Makefile` targets. Check the current pelican targets:
 
     :::bash
     grep --no-group-separator -B1 -F '$(PELICAN)' Makefile
@@ -416,7 +416,7 @@ For local development use `make devserver` which auto-regenerates the site on fi
     :::bash
     make devserver
 
-See the [Pelican documentation](https://docs.getpelican.com/en/latest/publish.html) for more options including live reload with `invoke livereload`.
+See the [Pelican documentation](https://docs.getpelican.com/en/latest/publish.html) for more options, including live reload with `invoke livereload`.
 
 ### Publishing Changes
 
@@ -453,7 +453,7 @@ For next steps, I'm looking forward to automating the Pelican quickstart phase. 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
 
-## _Notes_
+## Notes
 
 [^1]: You can always manage Python dependencies manually using pip but it is better to [use a dedicated tool](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
 [^2]: Alternatively you can quickstart running Pelican locally and publish content of `output/` directory with [a branch deployment](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#troubleshooting-publishing-from-a-branch)
