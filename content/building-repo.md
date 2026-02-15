@@ -411,12 +411,23 @@ What it will do:
 
 ### Local Development
 
-<!-- make devserver, live reload -->
-<!-- Testing changes locally -->
+For local development use `make devserver` which auto-regenerates the site on file changes and serves it at http://localhost:8000.
+
+    :::bash
+    make devserver
+
+See the [Pelican documentation](https://docs.getpelican.com/en/latest/publish.html) for more options including live reload with `invoke livereload`.
 
 ### Publishing Changes
 
-<!-- The process from writing content to deployment -->
+Just push your changes to the `main` branch and the GitHub Actions workflow handles the rest:
+
+    :::bash
+    git add content/my-new-article.md
+    git commit -m "Add new article"
+    git push
+
+The workflow will automatically build and deploy your site to GitHub Pages. You can monitor the deployment progress in the Actions tab of your repository.
 
 ## Lessons Learned
 
