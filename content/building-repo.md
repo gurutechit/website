@@ -431,14 +431,19 @@ The workflow will automatically build and deploy your site to GitHub Pages. You 
 
 ## Lessons Learned
 
-<!-- What challenges did you face? -->
-<!-- What would you do differently? -->
-<!-- Tips for others -->
+I had never used a static website generator before, so exploring one of them, reading documentation, and learning the workflow allowed me to acquire more knowledge about them in general. I imagine that using Jekyll or Hugo would not be so different.
+
+Using Poetry was my personal preference and probably a bit overkill for this project, but I was able to integrate it successfully.
+
+For the development of the GitHub workflow, I started by asking GitHub to create a Jekyll workflow for me and then modified it. If you have an option to start from an official example that works, why not use it?
+
+Using path filters in the workflow ensures it only runs when relevant files change (content, theme, configuration), saving CI minutes and avoiding unnecessary deployments.
 
 ## Conclusion
 
-<!-- Summary and next steps -->
-<!-- Links to the repository, live site -->
+I finally renewed [www.gurutech.it](https://www.gurutech.it). Now I only have to write content and have it published automatically. Please have a look at the GitHub repository [here](https://github.com/gurutechit/website).
+
+For next steps, I'm looking forward to automating the Pelican quickstart phase. I wrote some example code for it under [scripts/](https://github.com/gurutechit/website/tree/main/scripts) and opened an [issue](https://github.com/getpelican/pelican/issues/3565) on the main Pelican project to suggest an improvement.
 
 ## Resources
 
