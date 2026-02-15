@@ -447,10 +447,10 @@ For next steps, I'm looking forward to automating the Pelican quickstart phase. 
 
 ## Resources
 
-<!-- Useful links -->
-<!-- - [Pelican Documentation](https://docs.getpelican.com/) -->
-<!-- - [Poetry Documentation](https://python-poetry.org/docs/) -->
-<!-- - [GitHub Pages Documentation](https://docs.github.com/en/pages) -->
+- [Pelican Documentation](https://docs.getpelican.com/)
+- [Poetry Documentation](https://python-poetry.org/docs/)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
 
 ## _Notes_
