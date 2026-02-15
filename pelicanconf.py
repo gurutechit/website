@@ -1,12 +1,12 @@
-AUTHOR = 'Gurutech'
-SITENAME = 'Gurutech'
+AUTHOR = "Gurutech"
+SITENAME = "Gurutech"
 SITEURL = "https://www.gurutech.it"
 
 PATH = "content"
 
-TIMEZONE = 'Europe/Rome'
+TIMEZONE = "Europe/Rome"
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = "en"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -37,36 +37,36 @@ DISPLAY_PAGES_ON_MENU = True
 RELATIVE_URLS = True
 
 STATIC_PATHS = [
-    'extra/CNAME',
-    'extra/favicon.ico',
-    'extra/favicon-16x16.png',
-    'extra/favicon-32x32.png',
-    'extra/apple-touch-icon.png',
+    "extra/CNAME",
+    "extra/favicon.ico",
+    "extra/favicon-16x16.png",
+    "extra/favicon-32x32.png",
+    "extra/apple-touch-icon.png",
 ]
 EXTRA_PATH_METADATA = {
-    'extra/CNAME': {'path': 'CNAME'},
-    'extra/favicon.ico': {'path': 'favicon.ico'},
-    'extra/favicon-16x16.png': {'path': 'favicon-16x16.png'},
-    'extra/favicon-32x32.png': {'path': 'favicon-32x32.png'},
-    'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
+    "extra/CNAME": {"path": "CNAME"},
+    "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/favicon-16x16.png": {"path": "favicon-16x16.png"},
+    "extra/favicon-32x32.png": {"path": "favicon-32x32.png"},
+    "extra/apple-touch-icon.png": {"path": "apple-touch-icon.png"},
 }
 
 # Plugins
-PLUGINS = ['sitemap', 'seo']
+PLUGINS = ["sitemap", "seo"]
 
 # Sitemap configuration
 SITEMAP = {
-    'format': 'xml',
-    'priorities': {
-        'articles': 0.7,
-        'indexes': 0.5,
-        'pages': 0.5,
+    "format": "xml",
+    "priorities": {
+        "articles": 0.7,
+        "indexes": 0.5,
+        "pages": 0.5,
     },
-    'changefreqs': {
-        'articles': 'weekly',
-        'indexes': 'weekly',
-        'pages': 'monthly',
-    }
+    "changefreqs": {
+        "articles": "weekly",
+        "indexes": "weekly",
+        "pages": "monthly",
+    },
 }
 
 # SEO plugin configuration
@@ -77,3 +77,16 @@ SEO_ENHANCER_TWITTER_CARDS = True
 
 # Theme
 THEME = "theme"
+
+# Markdown Extensions
+# https://docs.getpelican.com/en/latest/settings.html#MARKDOWN
+# https://python-markdown.github.io/extensions/
+
+MARKDOWN = {
+    "extension_configs": {
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
+        "markdown.extensions.extra": {},
+        "markdown.extensions.meta": {},
+    },
+    "output_format": "html5",
+}

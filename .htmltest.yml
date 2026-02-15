@@ -29,10 +29,17 @@ ExternalTimeout: 15
 IgnoreURLs:
   - "^https://fonts.googleapis.com"
   - "^https://fonts.gstatic.com"
+  # Ignore localhost examples in articles
+  - "^http://127.0.0.1"
   # Ignore theme assets - they won't exist until deployment
   - "^https://www.gurutech.it/theme/"
   # Ignore internal pages checked as external URLs - they may not exist until deployment
   - "^https://www.gurutech.it/pages/"
+  # Ignore self-referential Pelican-generated links that won't exist until deployment
+  - "^https://www.gurutech.it/category/"
+  - "^https://www.gurutech.it/tag/"
+  - "^https://www.gurutech.it/author/"
+  - "^https://www.gurutech.it/[^/]+\\.html$"
 
 # Ignore missing alt attributes (Pelican may generate some images without)
 IgnoreAltMissing: false
