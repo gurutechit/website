@@ -52,7 +52,10 @@ EXTRA_PATH_METADATA = {
 }
 
 # Plugins
-PLUGINS = ["sitemap", "seo"]
+PLUGINS = ["sitemap", "seo", "tag_cloud"]
+
+# Tag cloud configuration
+TAG_CLOUD_EXCLUDE = ["pippo", "pluto", "paperino"]
 
 # Sitemap configuration
 SITEMAP = {
